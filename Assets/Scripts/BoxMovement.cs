@@ -29,7 +29,7 @@ public class BoxMovement : MonoBehaviour
     void Update()
     {
 		if (MicrophoneInput.Loudness > 0) {
-			audio.PlayOneShot(flap, 0.7F);
+			//audio.PlayOneShot(flap, 0.7F);
 		}
         float force = jumpForce * MicrophoneInput.Loudness;
         rb.AddForce(transform.up * force);
