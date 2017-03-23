@@ -11,6 +11,15 @@ public class BoxMovement : MonoBehaviour
 
     public Text scoreText;
 
+	public AudioClip flap;
+
+	AudioSource audio;
+
+	void Start()
+	{
+		audio = GetComponent<AudioSource>();
+	}
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,6 +28,9 @@ public class BoxMovement : MonoBehaviour
 
     void Update()
     {
+		if (MicrophoneInput.Loudness > 0) {
+			audio.PlayOneShot(flap, 0.7F);
+		}
         float force = jumpForce * MicrophoneInput.Loudness;
         rb.AddForce(transform.up * force);
     }
